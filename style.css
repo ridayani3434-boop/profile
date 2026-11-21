@@ -1,0 +1,765 @@
+
+/* =====================================
+   1. RESET DAN WARNA UTAMA
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background: #250d1b;
+    --background-dark: #1b0a15;
+    --background-card: #421b32;
+    --background-light: #51223c;
+    --pink: #d68aa9;
+    --gold: #d9b878;
+    --white: #fff7fa;
+    --text: #d7c2cd;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* =====================================
+   2. ANIMASI DASAR
+===================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glowMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(100px, 70px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+/* =====================================
+   3. BACKGROUND CAHAYA
+===================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: #d68aa925;
+    filter: blur(100px);
+    border-radius: 50%;
+    top: 10%;
+    left: -150px;
+    pointer-events: none;
+    z-index: -1;
+    animation: glowMove 9s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: #d9b87820;
+    filter: blur(100px);
+    border-radius: 50%;
+    bottom: 5%;
+    right: -120px;
+    pointer-events: none;
+    z-index: -1;
+    animation: glowMove 11s ease-in-out infinite alternate-reverse;
+}
+
+/* =====================================
+   4. NAVBAR
+===================================== */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(37, 13, 27, 0.90);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #d9b87830;
+    animation: fadeIn 1s ease;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span,
+.section-title span,
+.home-content h1 span {
+    color: var(--gold);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -7px;
+    background: var(--gold);
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--gold);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-button {
+    background: var(--gold);
+    padding: 12px 24px;
+    border-radius: 30px;
+    color: #32172a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: var(--pink);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px #d68aa944;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* =====================================
+   5. HOME
+===================================== */
+
+.home {
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: auto;
+    padding: 140px 30px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.home-content {
+    max-width: 570px;
+    animation: fadeUp 1.2s ease both;
+}
+
+.welcome {
+    color: var(--gold);
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 22px;
+    animation: fadeIn 1.5s ease;
+}
+
+.home-content h1 {
+    font-size: 50px;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.home-content h2 {
+    font-size: 26px;
+    color: var(--pink);
+    margin-bottom: 22px;
+}
+
+.typing {
+    color: var(--gold);
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+.description {
+    color: var(--text);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 32px;
+}
+
+.btn-primary,
+.btn-outline {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.35s;
+    position: relative;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #32172a;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: var(--pink);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #d68aa944;
+}
+
+.btn-outline {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: #32172a;
+    transform: translateY(-5px);
+}
+
+/* Kilauan tombol */
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        #ffffff99,
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.7s;
+}
+
+.btn-primary:hover::before {
+    left: 150%;
+}
+
+/* =====================================
+   6. FOTO PROFIL
+===================================== */
+
+.home-image {
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+    position: relative;
+    animation: float 5s ease-in-out infinite;
+}
+
+.image-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--gold);
+    background: var(--background-card);
+    box-shadow:
+        0 0 0 12px #d9b87815,
+        0 0 45px #d9b87840;
+}
+
+.image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.image-circle:hover img {
+    transform: scale(1.1);
+}
+
+/* Lingkaran berputar */
+
+.home-image::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    animation: rotate 18s linear infinite;
+    pointer-events: none;
+}
+
+.decoration {
+    position: absolute;
+    right: -25px;
+    top: 5px;
+    color: var(--gold);
+    font-size: 45px;
+    animation: rotate 8s linear infinite;
+}
+
+/* =====================================
+   7. SECTION UMUM
+===================================== */
+
+.section {
+    padding: 110px 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+    animation: fadeUp 0.9s ease both;
+}
+
+.section-title p {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    color: var(--white);
+}
+
+/* =====================================
+   8. ABOUT
+===================================== */
+
+.about-content {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    background: linear-gradient(
+        135deg,
+        #421b32,
+        #321326
+    );
+    border-radius: 18px;
+    border: 1px solid #d9b87835;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 15px 40px #00000025;
+    animation: fadeUp 1s ease both;
+    transition: 0.4s;
+}
+
+.about-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px #00000035;
+}
+
+.about-content h3 {
+    font-size: 25px;
+    color: var(--gold);
+    margin-bottom: 22px;
+}
+
+.about-content p {
+    color: var(--text);
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.personal-info {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid #d9b87835;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 25px;
+}
+
+.personal-info strong {
+    color: var(--gold);
+}
+
+/* =====================================
+   9. PROJECTS
+===================================== */
+
+.projects-section {
+    max-width: 100%;
+    background: #321326;
+    border-top: 1px solid #d9b87825;
+    border-bottom: 1px solid #d9b87825;
+}
+
+.project-container {
+    max-width: 1140px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: linear-gradient(
+        145deg,
+        #492039,
+        #351426
+    );
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #d9b87830;
+    border-bottom: 3px solid var(--gold);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px #00000040;
+    border-color: var(--gold);
+}
+
+.project-icon {
+    font-size: 38px;
+    margin-bottom: 20px;
+    transition: 0.4s;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.project-card h3 {
+    color: var(--white);
+    margin-bottom: 15px;
+    font-size: 19px;
+}
+
+.project-card p {
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.project-card span {
+    color: var(--gold);
+    font-size: 12px;
+}
+
+/* =====================================
+   10. SKILLS
+===================================== */
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.skill-box {
+    background: var(--background-card);
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #d9b87830;
+    border-left: 3px solid var(--gold);
+    transition: 0.4s;
+}
+
+.skill-box:hover {
+    background: var(--background-light);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px #00000035;
+}
+
+.skill-box h3 {
+    color: var(--gold);
+    margin-bottom: 13px;
+    font-size: 20px;
+}
+
+.skill-box p {
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+/* =====================================
+   11. CONTACT
+===================================== */
+
+.contact-section {
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 650px;
+    margin: auto;
+    padding: 40px;
+    background: linear-gradient(
+        145deg,
+        #421b32,
+        #321326
+    );
+    border: 1px solid #d9b87835;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px #00000025;
+}
+
+.contact-content > p {
+    color: var(--text);
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 22px;
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+.contact-item span {
+    font-size: 22px;
+}
+
+.contact-item p {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.contact-content .btn-primary {
+    margin-top: 20px;
+}
+
+/* =====================================
+   12. FOOTER
+===================================== */
+
+footer {
+    background: var(--background-dark);
+    text-align: center;
+    padding: 28px;
+    color: #bda8b3;
+    font-size: 13px;
+    border-top: 1px solid #d9b87830;
+}
+
+/* =====================================
+   13. ANIMASI SAAT SCROLL
+===================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================
+   14. RESPONSIVE HP
+===================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 18px 20px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #250d1b;
+        flex-direction: column;
+        padding: 25px;
+        gap: 22px;
+        border-bottom: 1px solid #d9b87840;
+    }
+
+    .nav-menu.show {
+        display: flex;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .home {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 120px 20px 70px;
+        gap: 45px;
+    }
+
+    .home-image {
+        width: 245px;
+        height: 245px;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .home-content h2 {
+        font-size: 22px;
+    }
+
+    .description {
+        margin: auto;
+    }
+
+    .home-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .project-container,
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .about-content {
+        padding: 25px;
+    }
+
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        padding: 28px 20px;
+    }
+}
+
+/* =====================================
+   15. PENGATURAN ANIMASI PENGGUNA
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
